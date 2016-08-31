@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "AddVacancy";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Account")</li>
+        <li class="active">Add vacancy</li>
+    </ol>
+    <div class="row">
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Add new vacancy</h1>
+            </header>
+
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="thin text-center">Create new vacancy</h3>
+                        <p class="text-center text-muted">want to quickly find a tutor, create vacancy </p>
+                        <hr>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <h4>Vacancy</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <input type="hidden" name="UserId" value=@ViewBag.UserId>
+                                <input type="hidden" name="Date" value=@DateTime.Now>
+                                <div class="top-margin">
+                                    <label>Title <span class="text-danger"></span></label>
+                                    <input type="text" name="Title" class="form-control">
+                                </div>
+                                <div class="top-margin">
+                                    <label>Description<span class="text-danger"></span></label>
+                                    <input type="text" name="Description" class="form-control">
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="top-margin">
+                                        <label>Status <span class="text-danger"></span></label>
+                                        @Html.DropDownList("Status", new SelectList(new[] { "", "Активная", "Преостановленная", "Закрытая" }), new { @class = "btn btn-default dropdown-toggle " })
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>Education</label>
+                                        @Html.DropDownList("Education", new SelectList(new[] { "", "Школьник", "Студент", "Бакалавр", "Магистр", "Доцент", "Проф" }), new { @class = "btn btn-default dropdown-toggle " })
+                                    </div>
+                                </div>
+                                <div class="top-margin">
+                                    <label>Payment</label>
+                                    <input type="text" name="Payment" class="form-control">
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-6">
+                                        <label>Min age</label>
+                                        <input type="text" name="MinAge" class="form-control" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Max age</label>
+                                        <input type="text" name="MaxAge" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 text-right">
+                                    <br />
+                                    <button class="btn btn-action" type="submit">Next step</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
+        <!-- /Article -->
+
+    </div>
+</div>	<!-- /container -->

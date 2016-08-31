@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Tutor.Core.Entities.Summary>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+<header id="head" class="secondary"></header>
+
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li class="active">Summary List</li>
+    </ol>
+
+    <div class="row">
+
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Summary List</h1>
+            </header>
+@if (User.Identity.IsAuthenticated)
+{
+            <p>
+                @Html.ActionLink("Create New", "AddSummary", "Summary")
+            </p>
+}
+            @ViewBag.Add
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                       
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "SummaryPage", "Summary", new { id = item.SummaryId }, new { }) |
+
+                            @Html.ActionLink("Edit", "EditSummary", "Summary", new { id = item.SummaryId }, new { }) |
+                            @Html.ActionLink("Delete", "DeleteSummary", "Summary", new { id = item.SummaryId }, new { }) |
+
+                        </td>
+                    </tr>
+                }
+            </table>
+        </article>
+    </div>
+</div>

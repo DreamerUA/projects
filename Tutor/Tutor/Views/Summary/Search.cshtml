@@ -1,0 +1,143 @@
+﻿@model ICollection<Tutor.Core.Entities.Skill>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li class="active">Search tutor</li>
+    </ol>
+    <div class="row">
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h3 class="page-title">Search</h3>
+            </header>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="thin text-center">Search tutor</h3>
+                        <hr>
+                        @ViewBag.IsEdit
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <input type="hidden" name="Date" value=@DateTime.Now />
+                            <div id="skillsToSearch">
+                            </div>
+                             <div class="top-margin">
+                                <label>Main words</label>
+                                <input type="text" name="Word" class="form-control">
+                            </div>
+
+                            <div class="top-margin">
+                                <label>City </label>
+                                <input type="text" name="City" class="form-control" />
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-sm-6">
+                                    <label>Gender </label><br />
+                                    @Html.DropDownList("Education", new SelectList(new[] { "", "Male", "Female" }), new { @class = "btn btn-default dropdown-toggle " })
+                                    </div>
+                                <div class="col-sm-6">
+                                
+                                    <label>Education </label>
+                                    @Html.DropDownList("Education", new SelectList(new[] { "", "School", "Student", "Бакалавр", "Магистр", "Доцент", "Проф" }), new { @class = "btn btn-default dropdown-toggle " })
+                                </div>
+                            </div>
+                                <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <label>Min age</label>
+                                    <input type="text" name="MinAge" class="form-control" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Max Age </label>
+                                    <input type="text" name="MaxAge" class="form-control" />
+                                </div>
+                                <hr />
+                                <div class="col-lg-offset-9">
+                                    <br/>
+                                    <input type="submit" value="Find" class="btn btn-action" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-horizontal">
+                    @*создаем и добавляем скилл в бд и пользователю*@
+                    <div class="top-margin">
+                        <label>Find skill</label>
+                        <datalist id="browsers">
+                            @foreach (var item in Model)
+                            {
+                                <option data-value=@item.SkillId value=@item.Name></option>
+                            }
+                        </datalist>
+                        <input id="selected" list="browsers" name="browser" class="form-control">
+                        <p>
+                            <div class="text-right">
+                                <input value="Add to search request" id="submit" type="submit" class="btn btn-default">
+                            </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="skillResult">
+                    <div class="top-margin" id="deleteRes">
+                        <label>Skills to search</label>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div id="kbd">
+                                    <br />
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+         $(document).ready(function () {
+            var data = {};
+            $("#browsers option").each(function (i, el) {
+                data[$(el).data("value")] = $(el).val();
+            });
+
+            $('#submit').click(function () {
+
+                var value = $('#selected').val();
+                var data2 = {
+                    SkillId: $('#browsers [value="' + value + '"]').data('value'),
+                    vacancyId: $('#vac').val()
+                };
+
+                //добавить в даталист
+                var l ="<input type='hidden' name='skills' value="+data2.SkillId+" />";
+                $('#skillsToSearch').append(l);
+                //добавить в kbd
+                var a = "<kbd>" + value+" " + "<a><span class='glyphicon glyphicon-remove-circle'></span>Remove </a>" + "</kbd>";
+                $('#kbd').append(a);
+
+               
+            });
+        });
+    </script>
+}

@@ -1,0 +1,25 @@
+﻿@model  IEnumerable<Tutor.Core.Entities.Skill>
+
+@if (ViewBag.IsAdded != null)
+{
+    <div>"Такое умение уже есть, вопользуйтесь поиском"</div>
+}
+<div class="top-margin" id="deleteRes">
+    <label>User list skills</label>
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div id="kbd">
+                <br />
+                @foreach (var s in Model)
+                {
+                    <kbd>
+                        @s.Name
+                        @Html.ActionLink("Remove", "DeleteSkill", "Vacancy", new { id = s.SkillId, vacId = ViewBag.SumId }, new { @class = "glyphicon glyphicon-remove-circle" })
+                    </kbd>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

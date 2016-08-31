@@ -1,0 +1,35 @@
+﻿@model LabPI.Models.TrainModel
+
+@Model.nstotpr| @Model.nstprib <br />
+<table class="table">
+    <tr>
+        <td>Дата</td>
+        <td>Время отправления</td>
+        <td>Время прибытия</td>
+        <td>Врямя в пути</td>
+        <td>Кол.мест класс Люкс</td>
+        <td>Купэ</td>
+        <td>Плацкарт</td>
+        <td>Общие</td>
+        <td>Сидящие</td>
+
+    </tr>
+    
+        @foreach (var t in Model.trains)
+        {
+        <tr>
+            <td>@t.date</td>
+              @*@t.train.o
+                @t.from.o
+                @t.to.o*@
+            <td>@t.otpr</td>
+            <td>@t.prib</td>
+            <td>@t.vputi</td>
+            <td>@t.l</td>
+            <td>@t.k</td>
+            <td>@t.p</td>
+            <td>@t.o</td>
+            <td>@t.c</td>
+        </tr>
+        }
+    </table>

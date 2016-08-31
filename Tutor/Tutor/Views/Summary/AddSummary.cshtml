@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "AddSummary";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Account")</li>
+        <li class="active">Add summary</li>
+    </ol>
+    <div class="row">
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Add Summary</h1>
+            </header>
+
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="thin text-center">Create new Summary</h3>
+                        <p class="text-center text-muted"> To increase the chance of finding a job, create a CV </p>
+                        <hr>
+
+                        @ViewBag.IsEdit
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <h4>Vacancy</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <input type="hidden" name="UserId" value=@ViewBag.UserId>
+                                <input type="hidden" name="Date" value=@DateTime.Now />
+                                <div class="top-margin">
+                                    <label>Title <span class="text-danger">*</span></label>
+                                    <input type="text" name="Title" class="form-control">
+                                </div>
+                                <div class="top-margin">
+                                    <label>Description<span class="text-danger">*</span></label>
+                                    <input type="text" name="Description" class="form-control">
+                                </div>
+
+                                <div class="col-lg-4 text-right">
+                                    <br />
+                                    <button class="btn btn-action" type="submit">Next step</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
+        <!-- /Article -->
+
+    </div>
+</div>	<!-- /container -->

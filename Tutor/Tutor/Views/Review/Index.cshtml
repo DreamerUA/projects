@@ -1,0 +1,64 @@
+﻿@model int
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+<header id="head" class="secondary"></header>
+<div class="container">
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Account")</li>
+        <li>@Html.ActionLink("User Page", "UserPage", "Account", new { Id = Model }, new { })</li>
+        <li class="active">Create Comment</li>
+    </ol>
+    <!-- container -->
+    <div class="container">
+        <div class="row">
+            <!-- Article main content -->
+            <article class="col-sm-9 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Comment</h1>
+                </header>
+                <p>
+                    Leave your comment about this teacher
+                </p>
+                <br>
+                <label>Your mark for this person:</label>
+                <div id="rateYo"></div>
+                <br />
+                @using (Html.BeginForm("NewComment", "Review", FormMethod.Post))
+                { <input type="hidden" name="UserId" value=@Model />
+                <input type="hidden" name="SenderLogin" value=@User.Identity.Name.ToString() />
+                <input type="hidden" name="Date" value="@DateTime.Now" />
+                <input type="hidden" name="Mark" id="mark" />
+                <div class="row" id="row">
+                    <div class="col-sm-12">
+                        <textarea name="Message" placeholder="Type your message here..." class="form-control" rows="9"></textarea>
+                    </div>
+                </div>
+                <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <input class="btn btn-action" type="submit" value="Send message">
+                        </div>
+                    </div>
+                }
+            </article>
+            <aside class="col-sm-3 sidebar sidebar-right"></aside>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#rateYo").rateYo({
+                fullStar: true,
+                onSet: function (rating, rateYoInstance) {
+                    document.getElementById("mark").value = rating;
+                }
+            })
+        });
+    </script>
+}

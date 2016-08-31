@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "CreateInfo";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Account")</li>
+        <li class="active">Create Index</li>
+    </ol>
+
+    <div class="row">
+
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Create Info</h1>
+            </header>
+
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="thin text-center">Register a new account</h3>
+                        <p class="text-center text-muted">Personal information will allow you to quickly find a list of all the teachers and provide job</p>
+                        <hr>
+
+                        @ViewBag.Add
+                        @using (Html.BeginForm("CreateInfo", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <input type="hidden" value="@ViewBag.UserId" name="UserId" />
+                            <div class="top-margin">
+                                <label>First Name <span class="text-danger">*</span></label>
+                                <input type="text" name="FirstName" class="form-control">
+                            </div>
+                            <div class="top-margin">
+                                <label>Last Name <span class="text-danger">*</span></label>
+                                <input type="text" name="LastName" class="form-control">
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <label>Choose your education level</label>
+                                    @Html.DropDownList("Education", new SelectList(new[] { "", "Schooll", "Student", "Бакалавр", "Магистр", "Доцент", "Проф" }), new { @class = "btn btn-default dropdown-toggle " })
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Gender</label><br />
+                                    @Html.DropDownList("Gender", new SelectList(new[] { "", "Female", "Male" }), new { @class = "btn btn-default dropdown-toggle " })
+                                </div>
+                            </div>
+                                <div class="col-md-12">
+                                    <div class="col-sm-6">
+                                        <label>Date of Birth <span class="text-danger">*</span></label>
+                                        <input type='date' class="form-control" max=@DateTime.Now.ToString("u") name="DateOfBirth" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Choose image  <span class="text-danger"></span></label>
+                                        <input type="file" name="file">
+                                    </div>
+                                </div>
+                                <div class="top-margin">
+                                    <label>Country <span class="text-danger">*</span></label>
+                                    <input type="text" name="Country" class="form-control">
+                                </div>
+                                <div class="top-margin">
+                                    <label>City <span class="text-danger">*</span></label>
+                                    <input type="text" name="City" class="form-control">
+                                </div>
+
+                                <div class="top-margin">
+                                    <label>Phone <span class="text-danger">*</span></label>
+                                    <input type="text" name="Phone" class="form-control">
+                                </div>
+
+
+                                    <div class="top-margin">
+                                        <label>About you<span class="text-danger">*</span></label>
+                                        <input type="text" name="About" class="form-control">
+                                    </div>
+                                    <hr />
+                                    <div class="col-lg-offset-9">
+                                        <input type="submit" value="Create" class="btn btn-action" />
+                                    </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
+        <!-- /Article -->
+
+    </div>
+</div>	<!-- /container -->

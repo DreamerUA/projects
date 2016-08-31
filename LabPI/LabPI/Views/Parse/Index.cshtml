@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    @Html.ActionLink("OLX", "Olx", "Parse",routeValues: null, htmlAttributes: new {@class="olx"})|
+    @Html.ActionLink("PZ", "Weather", "Parse", routeValues: null, htmlAttributes: new { @class = "weather" })
+</div>
+<div id="content"> </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $(".olx").click(function (ev) {
+                ev.preventDefault();
+                loadMembershipView("/views/parse/olx");
+                return false;
+            });
+
+            $(function () {
+                $(".weather").click(function (ev) {
+                    ev.preventDefault();
+                    loadMembershipView("/views/parse/weather");
+                    return false;
+                });
+        });
+
+    </script>
+    }

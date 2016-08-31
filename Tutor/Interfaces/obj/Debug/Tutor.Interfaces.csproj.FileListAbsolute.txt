@@ -1,0 +1,10 @@
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Interfaces\bin\Debug\Tutor.Interfaces.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Interfaces\bin\Debug\Tutor.Interfaces.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Interfaces\bin\Debug\Tutor.Core.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Interfaces\bin\Debug\Tutor.Core.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Interfaces\obj\Debug\Tutor.Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Interfaces\obj\Debug\Tutor.Interfaces.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Interfaces\obj\Debug\Tutor.Interfaces.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Interfaces\bin\Debug\Tutor.Resources.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Interfaces\bin\Debug\Tutor.Resources.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Interfaces\bin\Debug\ru\Tutor.Resources.resources.dll

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Tutor.Core.Entities.Vacancy>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+<header id="head" class="secondary"></header>
+
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li class="active">Vacancy List</li>
+    </ol>
+
+    <div class="row">
+
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Vacancy List</h1>
+            </header>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p>
+                    @Html.ActionLink("Create New", "AddVacancy", "Vacancy")
+                </p>
+            }
+            @ViewBag.Add
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Payment)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Payment)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "VacancyPage", "Vacancy", new { id = item.VacancyId }, new { })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </article>
+    </div>
+</div>

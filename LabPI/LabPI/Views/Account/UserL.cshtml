@@ -1,0 +1,20 @@
+﻿@if(User.Identity.IsAuthenticated)
+{
+    <span>You a logged as 
+    @if(User.IsInRole("user")){
+        <span> User</span>
+    }
+    else {
+        <span> Admin</span>
+    }
+    </span>
+    
+    @User.Identity.Name <span>|</span>
+    @Html.ActionLink("logout", "Logoff", "Account")
+
+}
+else
+{
+    @Html.ActionLink("Вход", "Login", "Account")
+    @Html.ActionLink(" Регистрация", "Register", "Account")
+}

@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Calculator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row mycontainer">
+    <div class="col-md-9">
+        @using (Html.BeginForm("Count", "Calculator", FormMethod.Post, new { id = "myForm" }))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" placeholder="Первый параметр" class="form-control" name="x" />
+                </div>
+                <div class="col-md-2">
+                    @Html.DropDownList("action1", new SelectList(new[] { "Сложить", "Отнять", "Умножить", "Разделить" }), new { @class = "btn btn-primary dropdown-toggle " })
+                </div>
+                <div class="col-md-4">
+                    <input type="text" placeholder="Второй параметр" class="form-control" name="y" />
+                </div>
+
+                <div class="col-md-2">
+                    <input type="submit" class="btn btn-success" value="Равно" />
+                </div>
+            </div>
+            <br>
+            <h4>
+                <span class="label label-default">
+                    Дробное значение вводить через запятую!!!
+                </span>
+            </h4>
+        }
+    </div>
+    <div id="res" class="col-md-3"></div>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#myForm").on("submit", function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        $("#res").html(data);
+                    }
+                });
+            });
+        });
+    </script>
+}

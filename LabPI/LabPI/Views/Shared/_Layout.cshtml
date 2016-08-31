@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Lab 1", "Index", "Calculator")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Lab 2 for authorized", "Index", "Edit")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Lab 2", "Index", "Account")</li>
+                    }
+
+                    @if(User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Lab 3 ChatRoom","Index","Chat")</li> 
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Lab 3","Index","Account")</li>
+                    }
+                    <li>@Html.ActionLink("Lab4","Index", "Parse")</li>
+                </ul>
+                <div class="nav-pills pull-right container mycontainer">
+                    @Html.Action("UserL", "Account")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<!--Ссылка на библиотеку SignalR -->
+<script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+<!--Ссылка на автоматически сгенерированный скрипт хаба SignalR -->
+<script src="~/signalr/hubs"></script>
+<script src="~/Scripts/util.js"></script>
+</html>

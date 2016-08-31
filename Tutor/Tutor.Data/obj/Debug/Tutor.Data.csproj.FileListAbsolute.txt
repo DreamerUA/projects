@@ -1,0 +1,17 @@
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\Tutor.Data.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\Tutor.Data.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\Tutor.Core.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\Tutor.Interfaces.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\Tutor.Interfaces.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\Tutor.Core.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\obj\Debug\Tutor.Data.csprojResolveAssemblyReference.cache
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\obj\Debug\Tutor.Data.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\obj\Debug\Tutor.Data.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\Tutor.Data.dll.config
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\EntityFramework.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\EntityFramework.xml
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\Tutor.Resources.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\Tutor.Resources.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Data\bin\Debug\ru\Tutor.Resources.resources.dll

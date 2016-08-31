@@ -1,0 +1,70 @@
+﻿@model Tutor.Core.LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Account")</li>
+        <li class="active">User access</li>
+    </ol>
+
+    <div class="row">
+
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">Sign in</h1>
+            </header>
+
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="thin text-center">Sign in to your account</h3>
+                        <p class="text-center text-muted">
+                            Log in the system, or @Html.ActionLink("Register", "Register", "Account"), it will allow you to take full advantage of the site
+                        </p>
+                        <hr>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="top-margin">
+                                <label>Username <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="Login">
+                                <!-- @Html.EditorFor(model => model.Login, new { @class = "form-control" }) -->
+                            </div>
+                            <div class="top-margin">
+                                <label>Password <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" name="Password">
+                                <!-- @Html.EditorFor(model => model.Password, new { @class = "form-control" }) -->
+                                <!-- @Html.ValidationMessageFor(model => model.Password) -->
+                            </div>
+
+                            <hr>
+
+                             <div class="row">
+                                <div class="col-lg-8">
+                                    @*<b><a href="">Forgot password?</a></b>*@
+                                </div> 
+                            <div class="col-lg-4 text-right">
+                                <button class="btn btn-action" type="submit">Sign in</button>
+                            </div>
+							</div>
+                        }
+                    </div>
+                </div>
+
+        </div>
+
+        </article>
+        <!-- /Article -->
+
+    </div>
+    </div>	<!-- /container -->

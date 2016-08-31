@@ -1,0 +1,163 @@
+﻿@model Tutor.Core.EditVacancyModel
+@{
+    ViewBag.Title = "EditVacancy";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Vacancy List", "Index", "Vacancy")</li>
+        <li class="active">@Html.ActionLink("Vacancy page", "VacancyPage", new { Id = Model.Vacancy.VacancyId })</li>
+        <li class="active">Edit vacancy</li>
+    </ol>
+    <div class="row">
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h3 class="page-title">Edit vacancy</h3>
+            </header>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="thin text-center">Vacancy Edit</h3>
+                        <hr>
+                        @ViewBag.IsEdit
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <input type='hidden' name="VacancyId" value=@Model.Vacancy.VacancyId id="vac" />
+                            <input type='hidden' name="UserId" value=@Model.Vacancy.UserId />
+                            <input type="hidden" name="Date" value=@DateTime.Now />
+                            <div class="top-margin">
+                                <label>Title <span class="text-danger">*</span></label>
+                                <input type="text" name="Title" class="form-control" value=@Model.Vacancy.Title>
+                            </div>
+                            <div class="top-margin">
+                                <label>Description <span class="text-danger">*</span></label>
+                                <input type="text" name="Description" class="form-control" value=@Model.Vacancy.Description>
+                            </div>
+                            <div class="top-margin">
+                                <label>Payment <span class="text-danger">*</span></label>
+                                <input type="text" name="Payment" class="form-control" value=@Model.Vacancy.Payment>
+                            </div>
+                            <div class="top-margin">
+                                <label>Status <span class="text-danger">*</span></label>
+                                @Html.DropDownList("Status", new SelectList(new[] { "", "Активная", "Преостановленная", "Закрытая" }), new { @class = "btn btn-default dropdown-toggle " })
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <label>Minimal age <span class="text-danger"></span></label>
+                                    <input type="text" name="MinAge" value=@Model.Vacancy.MinAge />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Max Age <span class="text-danger">*</span></label>
+                                    <input type="text" name="MaxAge" value=@Model.Vacancy.MaxAge />
+                                </div>
+                                <hr />
+                                <div class="col-lg-offset-9">
+                                    <input type="submit" value="Save" class="btn btn-action" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-horizontal">
+                    @*создаем и добавляем скилл в бд и пользователю*@
+                    <div class="top-margin">
+                        <label>Find skill</label>
+                        <datalist id="browsers">
+                            @foreach (var item in Model.Skills)
+                            { 
+                                <option data-value=@item.SkillId value=@item.Name></option>
+                            }
+                        </datalist>
+                        <input id="selected" list="browsers" name="browser" class="form-control">
+                        <p>
+                            <div class="col-lg-offset-3 text-right">
+                                <input value="Add skill" id="submit" type="submit" class="btn btn-default">
+                            </div>
+                    </div>
+                    <hr />
+                    <div class="top-margin">
+                        <label>Add skill</label>
+                        <input type="text" name="name" class="form-control" id="newskill">
+                        <p>
+                            <div class="col-lg-offset-3 text-right">
+                                <input type="submit" value="Create&Add skill" class="btn btn-default" id="qwe" />
+                            </div>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="skillResult">
+                    @Html.Action("VacancySkill",new { vacId = @Model.Vacancy.VacancyId })
+                </div>
+            </div>
+
+        </article>
+
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('#qwe').click(function (e) {
+                e.preventDefault();
+                var data = {
+                    name: $('#newskill').val(),
+                    vacancyId: $('#vac').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/Vacancy/CreateSkill", // the method we are calling
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(data),
+                    DataType: "json",
+                    success: function (data) {
+                        $('#skillResult').html(data);
+                    }
+                });
+            })
+        })
+
+        $(document).ready(function () {
+            var data = {};
+            $("#browsers option").each(function (i, el) {
+                data[$(el).data("value")] = $(el).val();
+            });
+
+            $('#submit').click(function () {
+
+                var value = $('#selected').val();
+                var data2 = {
+                    SkillId: $('#browsers [value="' + value + '"]').data('value'),
+                    vacancyId: $('#vac').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/Vacancy/AddSkill", // the method we are calling
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(data2),
+                    DataType: "json",
+                    success: function (data) {
+                        $('#skillResult').html(data);
+                    }
+                });
+            });
+        });
+    </script>
+}

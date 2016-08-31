@@ -1,0 +1,12 @@
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\bin\Debug\Tutor.Resources.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\bin\Debug\Tutor.Resources.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\obj\Debug\Tutor.Resources.csproj.GenerateResource.Cache
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\obj\Debug\Tutor.Resources.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\obj\Debug\Tutor.Resources.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\obj\Debug\Tutor.Resources.csprojResolveAssemblyReference.cache
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\obj\Debug\Tutor.Resources.Resource.en2.resources
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\obj\Debug\Tutor.Resources.Resource.ru2.resources
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\obj\Debug\Tutor.Resources.Resource.ua2.resources
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\bin\Debug\ru\Tutor.Resources.resources.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\obj\Debug\Tutor.Resources.Resource.ru.resources
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Resources\obj\Debug\ru\Tutor.Resources.resources.dll

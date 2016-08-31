@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutContent" xml:space="preserve">
+    <value>Lorem ipsum
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, consequuntur eius repellendus eos aliquid molestiae ea laborum ex quibusdam laudantium voluptates placeat consectetur quam aliquam beatae soluta accusantium iusto nihil nesciunt unde veniam magnam repudiandae sapiente.
+
+Quos, aliquam nam velit impedit minus tenetur beatae voluptas facere sint pariatur! Voluptatibus, quisquam, error, est assumenda corporis inventore illo nesciunt iure aut dolor possimus repellat minima veniam alias eius!</value>
+  </data>
+  <data name="AboutMH" xml:space="preserve">
+    <value>About us</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Ukraine, Kharkiv, Science Av.  14</value>
+  </data>
+  <data name="AddSkill" xml:space="preserve">
+    <value>Add to search request</value>
+  </data>
+  <data name="Anonymous" xml:space="preserve">
+    <value>Anonymous</value>
+  </data>
+  <data name="ChoiceSkill" xml:space="preserve">
+    <value>Choice skill</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="ContactMH" xml:space="preserve">
+    <value>Contact us</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Create New</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="Follow" xml:space="preserve">
+    <value>Follow us</value>
+  </data>
+  <data name="FooterH" xml:space="preserve">
+    <value>Text widget</value>
+  </data>
+  <data name="FooterText" xml:space="preserve">
+    <value>orem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?
+
+Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic.</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginConten2" xml:space="preserve">
+    <value>adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis odio.</value>
+  </data>
+  <data name="LoginContent1" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet,</value>
+  </data>
+  <data name="LoginH" xml:space="preserve">
+    <value>Sign in to your account</value>
+  </data>
+  <data name="LoginMH" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="MainContent" xml:space="preserve">
+    <value>The difference between involvement and commitment is like an eggs-and-ham breakfast:
+the chicken was involved; the pig was committed.</value>
+  </data>
+  <data name="MainHeader" xml:space="preserve">
+    <value>The best place to tell people why they are here</value>
+  </data>
+  <data name="MainReason" xml:space="preserve">
+    <value>Reasons to use this template</value>
+  </data>
+  <data name="MainReason1" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?</value>
+  </data>
+  <data name="MainReason2" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit!</value>
+  </data>
+  <data name="MainReason3" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, vitae, perferendis, perspiciatis nobis voluptate quod illum soluta minima ipsam ratione quia numquam eveniet eum reprehenderit dolorem dicta nesciunt corporis?</value>
+  </data>
+  <data name="MainReason4" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, excepturi, maiores, dolorem quasi reprehenderit illo accusamus nulla minima repudiandae quas ducimus reiciendis odio sequi atque temporibus facere corporis eos expedita?</value>
+  </data>
+  <data name="MainReasonH1" xml:space="preserve">
+    <value>Bootstrap-powered</value>
+  </data>
+  <data name="MainReasonH2" xml:space="preserve">
+    <value>Fat-free</value>
+  </data>
+  <data name="MainReasonH3" xml:space="preserve">
+    <value>Creative Commons</value>
+  </data>
+  <data name="MainReasonH4" xml:space="preserve">
+    <value>Author's support</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RegisterContent1" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet,</value>
+  </data>
+  <data name="RegisterContent2" xml:space="preserve">
+    <value>adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis odio.</value>
+  </data>
+  <data name="RegisterH" xml:space="preserve">
+    <value>Register a new account</value>
+  </data>
+  <data name="RegisterMH" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchH" xml:space="preserve">
+    <value>Search tutor</value>
+  </data>
+  <data name="SearchMH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SendMess" xml:space="preserve">
+    <value>Send message</value>
+  </data>
+  <data name="Sign" xml:space="preserve">
+    <value>SIGN IN / SIGN UP</value>
+  </data>
+  <data name="Signin" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="Signup" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="Summaries" xml:space="preserve">
+    <value>Summaries</value>
+  </data>
+  <data name="SummaryList" xml:space="preserve">
+    <value>Summary List</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="UserList" xml:space="preserve">
+    <value>Users List</value>
+  </data>
+  <data name="UserPage" xml:space="preserve">
+    <value>User Page</value>
+  </data>
+  <data name="UserSkillList" xml:space="preserve">
+    <value>User skill list</value>
+  </data>
+  <data name="Vacancies" xml:space="preserve">
+    <value>Vacancies</value>
+  </data>
+  <data name="Vacancy" xml:space="preserve">
+    <value>Vacancy</value>
+  </data>
+  <data name="VacancyList" xml:space="preserve">
+    <value>Vacancy List</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DateRequired" xml:space="preserve">
+    <value>Date required</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Mark" xml:space="preserve">
+    <value>Mark</value>
+  </data>
+  <data name="MarkRequired" xml:space="preserve">
+    <value>Mark required</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="MessageRequired" xml:space="preserve">
+    <value>Message required</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Name required</value>
+  </data>
+  <data name="AboutRequired" xml:space="preserve">
+    <value>About required</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="CityRequired" xml:space="preserve">
+    <value>City required</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="CountryRequired" xml:space="preserve">
+    <value>Country required</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description required</value>
+  </data>
+  <data name="Education" xml:space="preserve">
+    <value>Education required</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Email required</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="FirstNameRequired" xml:space="preserve">
+    <value>First name required</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="ImagePath" xml:space="preserve">
+    <value>Image path</value>
+  </data>
+  <data name="ImagePathRequired" xml:space="preserve">
+    <value>Image path required</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Las name</value>
+  </data>
+  <data name="LastNameRequired" xml:space="preserve">
+    <value>Last name required</value>
+  </data>
+  <data name="LoginRequired" xml:space="preserve">
+    <value>Login required</value>
+  </data>
+  <data name="MaxAge" xml:space="preserve">
+    <value>Maximal age</value>
+  </data>
+  <data name="MinAge" xml:space="preserve">
+    <value>Minimal age</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="PhoneRequired" xml:space="preserve">
+    <value>Phone required</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status required</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TitleRequired" xml:space="preserve">
+    <value>Title required</value>
+  </data>
+  <data name="UserAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="UserLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="UserPhone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+</root>

@@ -1,0 +1,173 @@
+﻿@model Tutor.Core.EditUserModel
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Account")</li>
+        <li class="active">@Html.ActionLink("User Page", "UserPage", new {Id = Model.userInfo.UserId })</li>
+        <li class="active">Edit User</li>
+    </ol>
+    <div class="row">
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h3 class="page-title">Edit Info</h3>
+            </header>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="thin text-center">Edit</h3>
+                        <hr>
+                        @ViewBag.IsEdit
+                        @using (Html.BeginForm("EditUser", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <input type='hidden' name="UserInfoId" value=@Model.userInfo.UserInfoId />
+                            <input type='hidden' name="UserId" value=@Model.userInfo.UserId />
+                            <div class="top-margin">
+                                <label>First Name <span class="text-danger">*</span></label>
+                                <input type="text" name="FirstName" class="form-control" value=@Model.userInfo.FirstName>
+                            </div>
+                            <div class="top-margin">
+                                <label>Last Name <span class="text-danger">*</span></label>
+                                <input type="text" name="LastName" class="form-control" value=@Model.userInfo.LastName>
+                            </div>
+                            <div class="top-margin">
+                                <label>Date of Birth <span class="text-danger">*</span></label>
+                                <input type='date' class="form-control" max=@DateTime.Now.ToString("u") name="DateOfBirth" value=@Model.userInfo.DateOfBirth.ToString("u") />
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Choose image  <span class="text-danger"></span></label>
+                                <input type="file" name="file">
+                            </div>
+                            <div class="top-margin">
+                                <label>Education <span class="text-danger">*</span></label>
+                                @Html.DropDownList("Education", new SelectList(new[] { "", "Школьник", "Student", "Бакалавр", "Магистр", "Доцент", "Проф" }), new { @class = "btn btn-default dropdown-toggle "})
+                            </div>
+                            <div class="top-margin">
+                                <label>Gender <span class="text-danger">*</span></label>
+                                @Html.DropDownList("Gender", new SelectList(new[] { "", "Female", "Male" }), new { @class = "btn btn-default dropdown-toggle " })
+                            </div>
+                            <div class="top-margin">
+                                <label>Country <span class="text-danger">*</span></label>
+                                <input type="text" name="Country" class="form-control" value=@Model.userInfo.Country>
+                            </div>
+                            <div class="top-margin">
+                                <label>City <span class="text-danger">*</span></label>
+                                <input type="text" name="City" class="form-control" value=@Model.userInfo.City>
+                            </div>
+                            <div class="top-margin">
+                                <label>Phone <span class="text-danger">*</span></label>
+                                <input type="text" name="Phone" class="form-control" value=@Model.userInfo.Phone>
+                            </div>
+                            <div class="top-margin">
+                                <label>About <span class="text-danger">*</span></label>
+                                <input type="text" name="About" class="form-control" value=@Model.userInfo.About>
+                            </div>
+                            <hr />
+                            <div class="col-lg-offset-9">
+                                <input type="submit" value="Save" class="btn btn-action" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-horizontal">
+                    @*создаем и добавляем скилл в бд и пользователю*@
+                    <div class="top-margin">
+                        <label>Find skill</label>
+                        <datalist id="browsers">
+                            @foreach (var item in Model.skillList)
+                            {
+                                <option data-value=@item.SkillId value=@item.Name></option>
+                            }
+                        </datalist>
+                        <input id="selected" list="browsers" name="browser" class="form-control">
+                        <p>
+                            <div class="col-lg-offset-3 text-right">
+                                <input id="submit" type="submit" class="btn btn-default">
+                            </div>
+                    </div>
+                    <hr />
+                    <div class="top-margin">
+                        <label>Add skill</label>
+                        <input type="text" name="name" class="form-control" id="newskill">
+                        <p>
+                            <div class="col-lg-offset-3 text-right">
+                                <input type="submit" value="Add skill" class="btn btn-default" id="qwe" />
+                            </div>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="skillResult">
+                    @Html.Action("UserSkill")
+                </div>
+            </div>
+
+        </article>
+
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('#qwe').click(function (e) {
+                e.preventDefault();
+                var data = {
+                    name: $('#newskill').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/Account/CreateSkill", // the method we are calling
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(data),
+                    DataType: "json",
+                    success: function (data) {
+                        $('#skillResult').html(data);
+                    }
+                });
+            })
+        })
+
+        $(document).ready(function () {
+            var data = {};
+            $("#browsers option").each(function (i, el) {
+                data[$(el).data("value")] = $(el).val();
+            });
+
+            $('#submit').click(function () {
+
+                var value = $('#selected').val();
+                var data2 = {
+                    SkillId: $('#browsers [value="' + value + '"]').data('value'),
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/Account/AddSkill", // the method we are calling
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(data2),
+                    DataType: "json",
+                    success: function (data) {
+                        $('#skillResult').html(data);
+                    }
+                });
+            });
+        });
+    </script>
+}

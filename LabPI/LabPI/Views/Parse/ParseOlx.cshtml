@@ -1,0 +1,9 @@
+﻿@Html.Raw(ViewBag.List);
+<hr />
+Введите страницу 1| @using (Html.BeginForm("Page", "Parse", FormMethod.Post, new { id = "pageForm" }))
+{
+    <input type="text" name="page" class="form-control" placeholder="Current page @ViewBag.CurrentPage" />
+    <input type="submit" name="ok" class="btn-primary" />
+    <input type="hidden" name="product" value="@ViewBag.Product" />
+    <input type="hidden" name="city" value="@ViewBag.City" />
+}|@ViewBag.Page;

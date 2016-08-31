@@ -1,0 +1,160 @@
+﻿@model Tutor.Core.UserPageModel
+@{
+    ViewBag.Title = "UserPage";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Account")</li>
+        <li class="active">UserPage</li>
+    </ol>
+    <div class="row">
+        <header class="page-header">
+            <h3 class="page-title">@Model.info.FirstName @Model.info.LastName</h3>
+        </header>
+
+        <div class="col-md-9 maincontent">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    @*Информация о пользователе*@
+                    <br>
+                    <div class="col-md-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">@Model.info.FirstName @Model.info.LastName</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-3 ">
+                                        <img alt="User Pic" src="@Model.info.ImagePath" class="img-circle" width="140px" height="140px" >
+                                        @if (ViewBag.Login == User.Identity.Name)
+                                        {
+                                            <br />
+                                            <p>
+                                                @Html.ActionLink(" Edit", "EditUser", new { id = Model.info.UserId }, new { @class = "glyphicon glyphicon-edit btn btn-sm btn-warning " })
+                                            </p>
+                                        }
+                                        <p>
+                                            @Html.ActionLink("Vacancies  ", "UserVacancies", "Vacancy", new { }, new { @class = "btn btn-sm btn-default" })
+                                        </p>
+                                        <p>
+                                            @Html.ActionLink("Summaries", "UserSummaries", "Summary", new { }, new { @class = "btn btn-sm btn-default" })
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9 col-lg-9">
+                                        <table class="table table-user-information">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Education:</td>
+                                                    <td>@Model.info.Education</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date of Birth</td>
+                                                    <td>@Model.info.DateOfBirth.ToLongDateString()</td>
+                                                </tr>
+                                                <tr>
+                                                <tr>
+                                                    <td>Gender</td>
+                                                    <td>@Model.info.Gender</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Home Address</td>
+                                                    <td>@Model.info.City, @Model.info.Country</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email</td>
+                                                    <td><a href="mailto:#">@Model.user.Email</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Phone Number</td>
+                                                    <td>
+                                                        @Model.info.Phone
+                                                    </td>
+                                                </tr>
+                                                </tr>
+                                                <tr>
+                                                    <td>About</td>
+                                                    <td>@Model.info.About</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                @foreach (var s in Model.info.Skills)
+                                {
+                                    <span>@s.Name</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="top-margin">
+                            <label>Comments</label>
+                            <div class="well">
+                                @if (User.Identity.IsAuthenticated)
+                                { 
+                                   if (ViewBag.Login != User.Identity.Name)
+                                    {
+
+                                        <div class="text-right">
+                                            @Html.ActionLink("Leave a Review ", "Index", "Review", new { id = Model.info.UserId }, new { @class = "btn btn-action" })
+                                        </div>
+
+                                        }
+                                    }<hr>
+                                    @foreach (var c in Model.comments.Comments)
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                @Html.ActionLink(@c.User.Login, "UserPage", "Account", new { Id = c.User.UserId }, new { })
+                                                @for (int i = 0; i < 5; i++)
+                                                {
+                                                    if (i < c.Review.Mark)
+                                                    {
+                                                        <span class="glyphicon glyphicon-star"></span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                                    }
+                                                }
+                                                <span class="pull-right">@c.Review.Date</span>
+                                                <p>@c.Review.Message</p>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    }
+
+                                    <div class="row">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*Рандомные репетиторы*@
+            <aside class="col-md-3 sidebar sidebar-right">
+
+                @foreach (var v in Model.Summaries)
+            {
+                    <div class="widget">
+
+                        @Html.ActionLink(v.Summary.Title, "SummaryPage", "Summary", new { id = v.Summary.SummaryId }, new { }) <br />
+                        @v.Summary.Description<br />
+                        Author:@Html.ActionLink(@v.Owner.FirstName + " " + @v.Owner.LastName, "UserPage", "Account", new { Id = v.Owner.UserId }, new { })
+                        @v.Owner.Phone
+                    </div>
+                    <hr />
+                }
+            </aside>
+        </div>
+    </div>

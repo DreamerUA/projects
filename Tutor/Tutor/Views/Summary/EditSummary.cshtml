@@ -1,0 +1,142 @@
+﻿@model Tutor.Core.EditSummaryModel
+@{
+    ViewBag.Title = "EditSummary";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Account")</li>
+        <li class="active">@Html.ActionLink("Summary page", "SummaryPage", new { Id = Model.Summary.SummaryId })</li>
+        <li class="active">Edit summary</li>
+    </ol>
+    <div class="row">
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h3 class="page-title">Edit summary</h3>
+            </header>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="thin text-center">Edit summary</h3>
+                        <hr>
+                        @ViewBag.IsEdit
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <input type='hidden' name="SummaryId" value=@Model.Summary.SummaryId  id="sum"/>
+                            <input type='hidden' name="UserId" value=@Model.Summary.UserId />
+                            <input type="hidden" name="Date" value=@DateTime.Now />
+                            <div class="top-margin">
+                                <label>Title <span class="text-danger">*</span></label>
+                                <input type="text" name="Title" class="form-control" value=@Model.Summary.Title>
+                            </div>
+                            <div class="top-margin">
+                                <label>Description <span class="text-danger">*</span></label>
+                                <input type="text" name="Description" class="form-control" value=@Model.Summary.Description>
+                            </div>
+                            <hr />
+                            <div class="col-lg-offset-9">
+                                <input type="submit" value="Save" class="btn btn-action" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-horizontal">
+                    <div class="top-margin">
+                        <label>Find skill</label>
+                        <datalist id="browsers">
+                            @foreach (var item in Model.Skills)
+                            { 
+                                <option data-value=@item.SkillId value=@item.Name></option>
+                            }
+                        </datalist>
+                        <input id="selected" list="browsers" name="browser" class="form-control">
+                        <p>
+                            <div class="col-lg-offset-3 text-right">
+                                <input id="submit" type="submit" class="btn btn-default">
+                            </div>
+                    </div>
+                    <hr />
+                    @*<div class="top-margin">
+                        <label>Add skill</label>
+                        <input type="text" name="name" class="form-control" id="newskill">
+                        <p>
+                            <div class="col-lg-offset-3 text-right">
+                                <input type="submit" value="Add skill" class="btn btn-default" id="qwe" />
+                            </div>
+                    </div>
+                    <hr />*@
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="skillResult">
+                    @Html.Action("SummarySkill", new { sumId = @Model.Summary.SummaryId })
+                </div>
+            </div>
+
+        </article>
+
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('#qwe').click(function (e) {
+                e.preventDefault();
+                var data = {
+                    name: $('#newskill').val(),
+                    summaryId: $('#sum').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/Summary/CreateSkill", // the method we are calling
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(data),
+                    DataType: "json",
+                    success: function (data) {
+                        $('#skillResult').html(data);
+                    }
+                });
+            })
+        })
+
+        $(document).ready(function () {
+            var data = {};
+            $("#browsers option").each(function (i, el) {
+                data[$(el).data("value")] = $(el).val();
+            });
+
+            $('#submit').click(function () {
+
+                var value = $('#selected').val();
+                var data2 = {
+                    SkillId: $('#browsers [value="' + value + '"]').data('value'),
+                    summaryId: $('#sum').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/Summary/AddSkill", // the method we are calling
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(data2),
+                    DataType: "json",
+                    success: function (data) {
+                        $('#skillResult').html(data);
+                    }
+                });
+            });
+        });
+    </script>
+}

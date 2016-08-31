@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Weather";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    @Html.ActionLink("OLX", "Olx", "Parse")|
+    @Html.ActionLink("PZ", "Weather", "Parse")
+</div>
+<h2>PZ GOV ua</h2>
+@using (Html.BeginForm("ParseWeather", "Parse", FormMethod.Post, new { id = "parseForm2" }))
+{
+    <input type="text" name="station1" class="form-control" placeholder="Город" value="ЛЬВIВ" />
+    <input type="text" name="station2" class="form-control" placeholder="Страна" value="ХАРКIВ-ЛЕВАДА" />
+    <input type="text" name="date" class="form-control" placeholder="Страна" value="28-12-2015" />
+
+    <input type="submit" name="ok" class="btn-success" />
+}

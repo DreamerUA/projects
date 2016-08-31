@@ -1,0 +1,12 @@
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\bin\Debug\Tutor.Core.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\bin\Debug\Tutor.Core.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\obj\Debug\Tutor.Core.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\obj\Debug\Tutor.Core.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\bin\Debug\System.Web.Mvc.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\bin\Debug\System.Web.Mvc.xml
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\bin\Debug\Microsoft.Web.Infrastructure.xml
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\obj\Debug\Tutor.Core.csprojResolveAssemblyReference.cache
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\bin\Debug\Tutor.Resources.dll
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\bin\Debug\Tutor.Resources.pdb
+C:\Users\pugac\Documents\Repositories\Diploma\Tutor\Tutor.Core\bin\Debug\ru\Tutor.Resources.resources.dll

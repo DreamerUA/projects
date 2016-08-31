@@ -1,0 +1,154 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/newcss")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/newjs")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("Scripts", required: false)
+</head>
+<body class="home">
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top headroom">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Button for smallest screens -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" href="/Home/Index"><img src="~/Images/logo.png" alt="Tutor Search"></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Search tutor", "Search", "Summary")</li>
+                        <li>@Html.ActionLink("Search job", "Search", "Vacancy")</li>
+                        @*<li>@Html.ActionLink("UserList (Убрать)", "Index", "Account")</li>*@
+                        <li>@Html.ActionLink("Vacancy List", "Index", "Vacancy")</li>
+                        <li>@Html.ActionLink("Summary List", "Index", "Summary")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                @User.Identity.Name.ToString()
+                                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <li>
+                                        <a href="~/Admin/Index"><i class="fa fa-user fa-fw"></i>Admin</a>
+                                    </li>
+                                }
+                                <li>
+                                    <a href="~/Account/GetUserPage"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="~/Account/Logoff"><i class="fa fa-sign-out fa-fw "></i> Logout</a>
+                                </li>
+                            </ul>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Search tutor", "Search", "Summary")</li>
+                        <li>@Html.ActionLink("Summary List", "Index", "Summary")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("SIGN IN / SIGN UP", "Login", "Account", new { }, new { @class = "btn" }) </li>
+                    }
+                    <li>
+                        <ul>
+                            <li class="list-unstyled">@Html.ActionLink("ENG", "ChangeCulture", "Home", new { lang = "en" }, new { @class = "text-small" })</li>
+                            <li class="list-unstyled">@Html.ActionLink("УКР", "ChangeCulture", "Home", new { lang = "ua" }, new { })</li>
+                            <li class="list-unstyled">
+                                @Html.ActionLink("РУС", "ChangeCulture", "Home", new { lang = "ru" }, new { })
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+@RenderBody()
+<footer id="footer" class="top-space">
+
+    <div class="footer1">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3 widget">
+                    <h3 class="widget-title">Contact</h3>
+                    <div class="widget-body">
+                        <p>
+                            +234 23 9873237<br>
+                            <a href="mailto:#">pugachov.eu@gmail.com</a><br>
+                            <br>
+                            Ukraine, Kharkiv, Nauki av. 14, 61000
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 widget">
+                    <h3 class="widget-title">Follow Us</h3>
+                    <div class="widget-body">
+                        <p class="follow-me-icons">
+                            <a href=""><i class="fa fa-twitter fa-2"></i></a>
+                            <a href=""><i class="fa fa-dribbble fa-2"></i></a>
+                            <a href=""><i class="fa fa-github fa-2"></i></a>
+                            <a href=""><i class="fa fa-facebook fa-2"></i></a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 widget">
+                    <h3 class="widget-title">Tutor search</h3>
+                    <div class="widget-body">
+                        <p>View profiles of teachers can be on the "list of tutors' page. To search for a specific teacher, use the search filters. Viberite necessary skills fill the required fields.</p>
+                    </div>
+                </div>
+
+            </div> <!-- /row of widgets -->
+        </div>
+    </div>
+
+    <div class="footer2">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 widget">
+                    <div class="widget-body">
+                        <p class="simplenav">
+                            <a href="#">Home</a> |
+                            <a href="about.html">About</a> |
+                            <a href="contact.html">Contact</a> |
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 widget">
+                    <div class="widget-body">
+                        <p class="text-right">
+                            Copyright &copy; @DateTime.Now.Year, Tutor Search.
+                        </p>
+                    </div>
+                </div>
+
+            </div> <!-- /row of widgets -->
+        </div>
+    </div>
+
+</footer>
+
+</body>
+</html>

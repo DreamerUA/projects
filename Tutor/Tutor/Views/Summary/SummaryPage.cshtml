@@ -1,0 +1,97 @@
+﻿@model Tutor.Core.NewSummaryPageModel
+
+@{
+    ViewBag.Title = "SummaryPage";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Summari List", "Index", "Summary")</li>
+        <li class="active">Summary Page</li>
+    </ol>
+    <div class="row">
+        <header class="page-header">
+            <h3 class="page-title">@Model.Summary.Title </h3>
+        </header>
+
+        <div class="col-md-9 maincontent">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <br>
+                        <div class="col-md-8">
+                            <p>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    @Html.ActionLink("Edit", "EditSummary", new { id = Model.Summary.SummaryId })
+                                }|
+                                @Html.ActionLink("Back to List", "Index")
+                            </p>
+                            <div class="col-md-12">
+                                <div class="col-md-5">
+                                    <img alt="User Pic" src="@Model.Owner.ImagePath" class="img-circle">
+                                    <div class="top-margin">
+                                        <label>Name</label>
+                                        @Html.ActionLink(String.Format(Model.Owner.FirstName, Model.Owner.LastName), "UserPage", "Account", new { id = Model.Owner.UserId }, new { })
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>City</label>
+                                        @Model.Owner.City
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>Phone</label>
+                                        @Model.Owner.Phone
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="top-margin">
+                                        <label>Title</label>
+                                        @Model.Summary.Title
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>Description </label>
+                                        @Model.Summary.Description
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>Date</label>
+                                        @Model.Summary.Date.ToLongDateString()
+                                                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <br />
+                            <ul>
+                                @foreach (var s in Model.Summary.Skills)
+                                {
+                                    <li>   @s.Name</li>
+                                }
+                            </ul>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <aside class="col-md-3 sidebar sidebar-right">
+            @foreach (var v in Model.Vacancies)
+            {
+                <div class="widget">
+                    @Html.ActionLink(v.Vacancy.Title, "VacancyPage", "Vacancy", new { id = v.Vacancy.VacancyId }, new { }) <br />
+                    @v.Vacancy.Description<br />
+                    @v.Vacancy.MinAge - @v.Vacancy.MaxAge<br />
+                    @v.Vacancy.Payment<br />
+                    Author:@Html.ActionLink(v.Owner.FirstName +" "+v.Owner.LastName, "UserPage", "Account", new { Id = v.Owner.UserId }, new { })
+                    @v.Owner.Phone
+                </div>
+                    <hr />
+            }
+
+            <hr />
+        </aside>
+    </div>
+</div>

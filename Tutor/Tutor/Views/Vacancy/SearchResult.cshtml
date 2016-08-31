@@ -1,0 +1,49 @@
+﻿@model ICollection<Tutor.Core.VacancyPageModel>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+<header id="head" class="secondary"></header>
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Search", "Search", "Vacancy")</li>
+        <li class="active">Search Result</li>
+    </ol>
+    <div class="row">
+        <header class="page-header">
+            <h1 class="page-title">Search Result</h1>
+        </header>
+        <table class="table table-striped table-condensed">
+            <tr class="success">
+                <td>Author</td>
+                <td>Phone</td>
+                <td>City</td>
+                <td>Vacancy</td>
+                <td>Age</td>
+                <td>Payment</td>
+                <td>Description</td>
+                <td>Skills</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(item.Owner.FirstName + " " + item.Owner.LastName, "UserPage", "Account", new { id = item.Owner.UserId }, new { })</td>
+                    <td>@item.Owner.Phone</td>
+                    <td>@item.Owner.City @item.Owner.Country</td>
+                    <td>@item.Vacancy.Title</td>
+                    <td>@item.Vacancy.MaxAge  - @item.Vacancy.MinAge</td>
+                    <td>@item.Vacancy.Payment</td>
+                    <td>@item.Vacancy.Description</td>
+                    <td>
+                        @foreach (var s in item.Vacancy.Skills)
+                        {
+                            @s.Name
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>	<!-- /container -->

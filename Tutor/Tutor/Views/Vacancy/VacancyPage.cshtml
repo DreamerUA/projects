@@ -1,0 +1,105 @@
+﻿@model Tutor.Core.NewVacancyPageModel
+
+@{
+    ViewBag.Title = "VacancyPage";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+<header id="head" class="secondary"></header>
+<!-- container -->
+<div class="container">
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Vacancy List", "Index", "Vacancy")</li>
+        <li class="active">Vacancy Page</li>
+    </ol>
+    <div class="row">
+        <header class="page-header">
+            <h3 class="page-title">@Model.Vacancy.Title </h3>
+        </header>
+        <div class="col-md-9 maincontent">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @*Информация о пользователе*@
+                    <div class="row">
+                        <br>
+                        <div class="col-md-8">
+                            <p>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    @Html.ActionLink("Edit", "EditVacancy", new { id = Model.Vacancy.VacancyId })
+                                }|
+                                @Html.ActionLink("Back to List", "Index")
+                            </p>
+                            <div class="col-md-12">
+                                <div class="col-md-5">
+                                    <img alt="User Pic" src="@Model.Owner.ImagePath" class="img-circle">
+                                    <div class="top-margin">
+                                        <label>Name</label>
+                                        @Html.ActionLink(String.Format(Model.Owner.FirstName, Model.Owner.LastName), "UserPage", "Account", new { id = Model.Owner.UserId }, new { })
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>City</label>
+                                        @Model.Owner.City
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>Phone</label>
+                                        @Model.Owner.Phone
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="top-margin">
+                                        <label>Title</label>
+                                        @Model.Vacancy.Title
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>Description <span class="text-danger"></span></label>
+                                        @Model.Vacancy.Description
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>Payment <span class="text-danger"></span></label>
+                                        @Model.Vacancy.Payment
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>Status <span class="text-danger"></span></label>
+                                        @Model.Vacancy.Status
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>Date <span class="text-danger"></span></label>
+                                        @Model.Vacancy.Date.ToLongDateString()
+                                    </div>
+                                    <div class="top-margin">
+                                        <label>Age <span class="text-danger"></span></label>
+                                        @Model.Vacancy.MinAge - @Model.Vacancy.MaxAge
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <br />
+                            <ul>
+                                @foreach (var s in Model.Vacancy.Skills)
+                                {
+                                    <li>   @s.Name</li>
+                                }
+                            </ul>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*Рандомные репетиторы*@
+        <aside class="col-md-3 sidebar sidebar-right">
+            @foreach (var v in Model.Summaries)
+            {
+                <div class="widget">
+
+                    @Html.ActionLink(v.Summary.Title, "SummaryPage", "Summary", new { id = v.Summary.SummaryId }, new { }) <br />
+                    @v.Summary.Description<br />
+                    Author:@Html.ActionLink(@v.Owner.FirstName +" "+ @v.Owner.LastName, "UserPage", "Account", new { Id = v.Owner.UserId }, new { })
+                    @v.Owner.Phone
+                </div>
+                <hr />
+            }
+        </aside>
+    </div>
+</div>
